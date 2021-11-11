@@ -1,6 +1,6 @@
 export 'screens/book_search_screen.dart';
 export 'screens/results_screen.dart';
-export 'screens/search_history.dart';
+export 'screens/search_history_screen.dart';
 export 'screens/favorite_books.dart';
 export 'functions/functions.dart';
 export 'widgets/greeting_widget.dart';
