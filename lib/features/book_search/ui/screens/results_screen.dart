@@ -36,13 +36,11 @@ class ResultsScreen extends ConsumerWidget {
 class _BookList extends StatelessWidget {
   const _BookList({Key? key, required this.books}) : super(key: key);
   final List<Book> books;
-  static const _paddings8 = 8.0;
   static const _size45 = 45.0;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.all(_paddings8),
       itemBuilder: (context, index) {
         final Book book = books[index];
 
@@ -58,26 +56,26 @@ class _BookList extends StatelessWidget {
               child: NetworkFadingImage(path: book.imageLinks.thumbNail),
             ),
           ),
-          trailing: Consumer(builder: (context, ref, _) {
-            var favorites =
-                ref.watch(bookSearchControllerProvider).favoriteBooksIds;
-            var favoritesLodaded = favorites.when(
-                data: (_) => true,
-                error: (_, __) => false,
-                loading: () => false);
-            var isFavorite = (favoritesLodaded &&
-                favorites.value != null &&
-                favorites.value!.isNotEmpty &&
-                favorites.value!.contains(book.id));
-            return IconButton(
+          trailing: Consumer(
+            builder: (context, ref, _) {
+              final favorites =
+                  ref.watch(bookSearchControllerProvider).favoriteBooksIds;
+              final isFavorite = ((favorites.value != null &&
+                      favorites.value is List<String>) &&
+                  (favorites.value!.isNotEmpty &&
+                      favorites.value!.contains(book.id)));
+
+              return IconButton(
                 onPressed: isFavorite
                     ? () async =>
                         await BookSearchUiFunctions.removeFavorite(ref, book)
                     : () async =>
                         await BookSearchUiFunctions.addFavorite(ref, book),
                 icon: Icon(Icons.favorite,
-                    color: !isFavorite ? Colors.grey.shade400 : Colors.red));
-          }),
+                    color: !isFavorite ? Colors.grey.shade400 : Colors.red),
+              );
+            },
+          ),
           subtitle: book.authors.isNotEmpty
               ? Text(book.authors.first)
               : const SizedBox(),
