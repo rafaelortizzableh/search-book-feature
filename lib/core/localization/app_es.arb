@@ -1,0 +1,22 @@
+{
+  "appTitle": "Book Search App",
+  "greetingLineOne": "👋 ¡Hola!",
+  "greetingLineTwo": "Encuentra el libro que buscas",
+  "greetingtext": "👋 ¡Hola! Encuentra el libro que buscas",
+  "searchBook": "Busca un libro",
+  "newSearch": "Nueva Búsqueda",
+  "search": "Buscar",
+  "results": "Resultados",
+  "favorite_books": "Libros favoritos",
+  "my_books": "Búsquedas pasadas",
+  "no_books_search_history": "Aún no has hecho ninguna búsqueda",
+  "no_favorite_books": "Aún no tienes libros favoritos",
+  "theme": "Theme",
+  "lightTheme": "Light Theme",
+  "systemTheme": "System Theme",
+  "darkTheme": "Dark Theme",
+  "resultsButtonText": "Buscar otro libro",
+  "noInternetConnection": "No hay conexión de Internet",
+  "noBooksFound": "No se ha encontrado ningún libro",
+  "pages": "Págs"
+}

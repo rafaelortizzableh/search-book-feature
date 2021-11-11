@@ -1,0 +1,42 @@
+{
+  "appTitle": "Book Search App",
+  "greetingLineOne": "👋 Hello!",
+  "greetingLineTwo": "Find the book you're looking for",
+  "searchBook": "Search for a book",
+  "newSearch": "New Search",
+  "search": "Search",
+  "results": "Results",
+  "favorite_books": "Favorite Books",
+  "my_books": "Previous Searches",
+  "no_books_search_history": "You haven't searched for any books yet",
+  "no_favorite_books": "You still don't have any favorite books",
+  "theme": "Theme",
+  "@theme": {
+    "description": "The title of the theme on Theme Appbar"
+  },
+  "systemTheme": "System Theme",
+  "@systemTheme": {
+    "description": "Name of system theme"
+  },
+  "lightTheme": "Light Theme",
+  "@lightTheme": {
+    "description": "Name of light theme"
+  },
+  "darkTheme": "Dark Theme",
+  "@darkTheme": {
+    "description": "Name of dark theme"
+  },
+  "resultsButtonText": "Find another book",
+  "@resultsButtonText": {
+    "description": "Text for Button on Result View"
+  },
+  "noInternetConnection": "No Internet connection",
+  "@noInternetConnection": {
+    "description": "Text for 'No Internet connection Error'"
+  },
+  "noBooksFound": "No books found",
+  "@noBooksFound": {
+    "description": "Text for 'No books found'"
+  },
+  "pages": "Pages"
+}
