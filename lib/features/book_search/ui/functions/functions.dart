@@ -6,13 +6,13 @@ import '../../../book_search/book_search_export.dart';
 
 class BookSearchUiFunctions {
   static const _rounderBorder15 = 15.0;
-  static const _opacity09 = 0.9;
+  static const _opacity095 = 0.95;
 
   static void showDialogWidget(BuildContext context, Widget child) {
     showDialog(
         context: context,
         builder: (context) => child,
-        barrierColor: Palette.indigo400.withOpacity(_opacity09));
+        barrierColor: Palette.indigo400.withOpacity(_opacity095));
   }
 
   static void submitData(
