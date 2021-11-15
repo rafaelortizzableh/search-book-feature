@@ -100,6 +100,7 @@ class BookDetail extends StatelessWidget {
           ),
         ),
         Positioned(
+          top: _padding32,
           left: _padding32,
           child: GestureDetector(
             onTap: () => Navigator.of(context).pop(),
@@ -118,6 +119,7 @@ class BookDetail extends StatelessWidget {
                     (favorites.value!.isNotEmpty &&
                         favorites.value!.contains(book.id)));
             return Positioned(
+              top: _padding32,
               right: _padding32,
               child: GestureDetector(
                 onTap: isFavorite
