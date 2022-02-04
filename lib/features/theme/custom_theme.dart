@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'theme_export.dart';
 
 class CustomTheme {
@@ -10,23 +9,9 @@ class CustomTheme {
   static ThemeData darkTheme() {
     final theme = ThemeData.dark();
     return ThemeData(
-      colorScheme: ColorScheme.fromSwatch(
+      colorScheme: ColorScheme.fromSeed(
         brightness: Brightness.dark,
-        primarySwatch: MaterialColor(
-          Palette.indigo500.value,
-          const {
-            100: Palette.indigo100,
-            200: Palette.indigo200,
-            300: Palette.indigo300,
-            400: Palette.indigo400,
-            500: Palette.indigo500,
-            600: Palette.indigo600,
-            700: Palette.indigo700,
-            800: Palette.indigo800,
-            900: Palette.indigo900,
-          },
-        ),
-        accentColor: Palette.indigo500,
+        seedColor: Colors.indigo,
       ),
       scaffoldBackgroundColor: Palette.black,
       appBarTheme: const AppBarTheme(
@@ -61,23 +46,9 @@ class CustomTheme {
   static ThemeData lightTheme() {
     final theme = ThemeData.light();
     return ThemeData(
-      colorScheme: ColorScheme.fromSwatch(
+      colorScheme: ColorScheme.fromSeed(
         brightness: Brightness.light,
-        primarySwatch: MaterialColor(
-          Palette.indigo500.value,
-          const {
-            100: Palette.indigo100,
-            200: Palette.indigo200,
-            300: Palette.indigo300,
-            400: Palette.indigo400,
-            500: Palette.indigo500,
-            600: Palette.indigo600,
-            700: Palette.indigo700,
-            800: Palette.indigo800,
-            900: Palette.indigo900,
-          },
-        ),
-        accentColor: Palette.indigo500,
+        seedColor: Colors.indigo,
       ),
       scaffoldBackgroundColor: Palette.white,
       appBarTheme: const AppBarTheme(

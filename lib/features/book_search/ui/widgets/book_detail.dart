@@ -48,7 +48,7 @@ class BookDetail extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    book.authors.first,
+                    book.authors.isNotEmpty ? book.authors.first : '',
                     style: _theme.textTheme.headline6
                         ?.copyWith(color: Colors.white),
                     textAlign: TextAlign.center,
