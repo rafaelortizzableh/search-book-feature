@@ -16,7 +16,10 @@ class SearchBar extends StatelessWidget {
     final _translations = AppLocalizations.of(context);
     return InkWell(
       borderRadius: const BorderRadius.horizontal(
-          left: Radius.circular(_radius20), right: Radius.circular(_radius20)),
+        left: Radius.circular(_radius20),
+        right: Radius.circular(_radius20),
+      ),
+      splashColor: Palette.indigo200,
       onTap: onPressed,
       child: ClipRRect(
         child: Card(

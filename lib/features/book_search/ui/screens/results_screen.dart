@@ -59,11 +59,13 @@ class _BookList extends StatelessWidget {
           trailing: Consumer(
             builder: (context, ref, _) {
               final favorites =
-                  ref.watch(bookSearchControllerProvider).favoriteBooksIds;
-              final isFavorite = ((favorites.value != null &&
-                      favorites.value is List<String>) &&
-                  (favorites.value!.isNotEmpty &&
-                      favorites.value!.contains(book.id)));
+                  ref.watch(bookSearchControllerProvider).favoriteBooks.when(
+                        data: (favs) => favs,
+                        error: (e, _) => <Book>[],
+                        loading: () => <Book>[],
+                      );
+
+              final isFavorite = book.isFavorite(favorites);
 
               return IconButton(
                 onPressed: isFavorite

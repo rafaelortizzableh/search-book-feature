@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/core.dart';
 
-/// A service that stores and retrieves user theme.
-///
-/// By default, this class does not persist user theme. If you'd like to
-/// persist the user theme locally, use the shared_preferences package. If
-/// you'd like to store theme on a web server, use the http package.
 class ThemeService {
-  final SharedPreferencesService _sharedPreferencesService;
-  ThemeService(
-    this._sharedPreferencesService,
-  );
+  final Reader _read;
+  ThemeService(this._read);
 
   /// Loads the User's preferred ThemeMode from local or remote storage.
   ThemeMode themeMode() {
-    switch (_sharedPreferencesService.getUserTheme) {
+    final prefs = _read(sharedPreferencesServiceProvider);
+    switch (prefs.getStringFromSharedPreferences('selectedTheme')) {
       case 'light':
         return ThemeMode.light;
       case 'dark':
@@ -29,13 +24,15 @@ class ThemeService {
 
   /// Persists the user's preferred ThemeMode to local or remote storage.
   Future<bool> updateThemeMode(ThemeMode theme) async {
+    final prefs = _read(sharedPreferencesServiceProvider);
     switch (theme) {
       case ThemeMode.light:
-        return await _sharedPreferencesService.setPreferredTheme('light');
+        return await prefs.saveToSharedPreferences('selectedTheme', 'light');
       case ThemeMode.dark:
-        return await _sharedPreferencesService.setPreferredTheme('dark');
+        return await prefs.saveToSharedPreferences('selectedTheme', 'dark');
+
       case ThemeMode.system:
-        return await _sharedPreferencesService.setPreferredTheme('system');
+        return await prefs.saveToSharedPreferences('selectedTheme', 'system');
     }
   }
 }
