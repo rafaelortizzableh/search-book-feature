@@ -43,6 +43,7 @@ class BookDetailsScreen extends StatelessWidget {
                         await BookSearchUiFunctions.addFavorite(ref, book),
                 icon: Icon(
                   isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: isFavorite ? Colors.red : null,
                 ),
               );
             },

@@ -27,11 +27,6 @@ class BookSearchScreen extends ConsumerWidget {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () async =>
-                await BookSearchUiFunctions.showSearchModal(context, ref),
-          ),
-          IconButton(
             onPressed: () {
               Navigator.of(context).pushNamed(FavoriteBooksScreen.routeName);
             },
