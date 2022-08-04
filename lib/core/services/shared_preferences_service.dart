@@ -119,7 +119,7 @@ class SharedPreferencesService {
   /// To save a list of type string, call `saveListOfStringsToSharedPreferences`
   Future<bool> saveToSharedPreferences<T>(String key, T value) async {
     assert(
-      value.runtimeType != List<String>,
+      value is! List<String>,
       'Don\'t call this method with List<String>. Instead, call `saveListOfStringsToSharedPreferences`',
     );
     switch (value.runtimeType) {
