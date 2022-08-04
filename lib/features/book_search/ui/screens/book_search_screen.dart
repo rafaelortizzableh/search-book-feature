@@ -46,7 +46,9 @@ class BookSearchScreen extends ConsumerWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-            vertical: _padding32, horizontal: _padding16),
+          vertical: _padding32,
+          horizontal: _padding16,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,

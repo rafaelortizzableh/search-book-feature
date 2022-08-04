@@ -49,8 +49,10 @@ class _BookList extends StatelessWidget {
         final Book book = books[index];
 
         return ListTile(
-          onTap: () => BookSearchUiFunctions.showDialogWidget(
-              context, BookDetail(book: book)),
+          onTap: () => BookSearchUiFunctions.navigateToBookDetailsPage(
+            context,
+            book,
+          ),
           title:
               (Text(book.title, maxLines: 2, overflow: TextOverflow.ellipsis)),
           leading: SizedBox(

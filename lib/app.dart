@@ -44,6 +44,13 @@ class MyApp extends ConsumerWidget {
                     return const SearchHistoryScreen();
                   case FavoriteBooksScreen.routeName:
                     return const FavoriteBooksScreen();
+                  case BookDetailsScreen.routeName:
+                    if (routeSettings.arguments is! Book) {
+                      return const BookSearchScreen();
+                    }
+                    return BookDetailsScreen(
+                      book: routeSettings.arguments as Book,
+                    );
                   default:
                     return const BookSearchScreen();
                 }
