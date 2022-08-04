@@ -22,7 +22,6 @@ class MyApp extends ConsumerWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          debugShowCheckedModeBanner: false,
           supportedLocales: AppLocalizations.supportedLocales,
           onGenerateTitle: (BuildContext context) =>
               AppLocalizations.of(context)!.appTitle,

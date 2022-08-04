@@ -17,7 +17,6 @@ class BookSearchScreen extends ConsumerWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        centerTitle: true,
         title: Text(_translations?.appTitle ?? 'Book Search App'),
         leading: IconButton(
           onPressed: () {
@@ -26,11 +25,6 @@ class BookSearchScreen extends ConsumerWidget {
           icon: const Icon(Icons.light_mode),
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () async =>
-                await BookSearchUiFunctions.showSearchModal(context, ref),
-          ),
           IconButton(
             onPressed: () {
               Navigator.of(context).pushNamed(FavoriteBooksScreen.routeName);
@@ -45,23 +39,28 @@ class BookSearchScreen extends ConsumerWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.search),
+        onPressed: () async =>
+            await BookSearchUiFunctions.showSearchModal(context, ref),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          vertical: _padding32,
-          horizontal: _padding16,
-        ),
+            vertical: _padding32, horizontal: _padding16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            const Spacer(),
             const GreetingWidget(),
             const SizedBox(height: _padding16),
-            const Expanded(child: BookImage()),
+            const BookImage(),
             const SizedBox(height: _padding16),
             SearchBar(
               onPressed: () =>
                   BookSearchUiFunctions.showSearchModal(context, ref),
             ),
+            const Spacer(),
           ],
         ),
       ),

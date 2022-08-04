@@ -9,18 +9,15 @@ import '../../../../core/core.dart';
 import '../../book_search/book_search_export.dart';
 
 final bookSearchRepositoryProvider = Provider<BookSearchRepository>(
-    (ref) => GoogleBookSearchRepository(ref.read));
+    (ref) => GoogleBookSearchRepository(ref.watch(dioProvider)));
 
 abstract class BookSearchRepository {
   Future<List<BookRemoteEntity>> searchBooks(String search);
-  List<String>? get getPreviousSearches;
-  Future<bool> addUserSearch(String search);
-  Future<bool> removeUserSearch(String search);
 }
 
 class GoogleBookSearchRepository implements BookSearchRepository {
-  GoogleBookSearchRepository(this._read);
-  final Reader _read;
+  GoogleBookSearchRepository(this._dio);
+  final Dio _dio;
 
   @override
   Future<List<BookRemoteEntity>> searchBooks(String search) async {
@@ -28,8 +25,7 @@ class GoogleBookSearchRepository implements BookSearchRepository {
       final languageCode =
           Localizations.localeOf(AppConstants.navigationKey.currentContext!)
               .languageCode;
-      final response =
-          await _read(dioProvider).get('volumes', queryParameters: {
+      final response = await _dio.get('volumes', queryParameters: {
         'key': AppConstants.apiKey,
         'q': search,
         'langRestrict': languageCode,
@@ -54,44 +50,6 @@ class GoogleBookSearchRepository implements BookSearchRepository {
         message: e.response?.statusMessage ?? 'Something went wrong',
         code: e.response?.statusCode,
       );
-    }
-  }
-
-  @override
-  List<String>? get getPreviousSearches =>
-      _read(sharedPreferencesServiceProvider)
-          .getListOfStringsFromSharedPreferences('previousSearches');
-  @override
-  Future<bool> addUserSearch(String search) async {
-    try {
-      final _prefs = _read(sharedPreferencesServiceProvider);
-      final userSearches =
-          _prefs.getListOfStringsFromSharedPreferences('previousSearches') ??
-              [];
-      final newList = [...userSearches, search];
-      return await _prefs.saveListOfStringsToSharedPreferences(
-          'previousSearches', newList.toSet().toList());
-    } catch (e) {
-      debugPrint(e.toString());
-      rethrow;
-    }
-  }
-
-  @override
-  Future<bool> removeUserSearch(String search) async {
-    try {
-      final _prefs = _read(sharedPreferencesServiceProvider);
-      final userSearches =
-          _prefs.getListOfStringsFromSharedPreferences('previousSearches') ??
-              [];
-      if (userSearches.contains(search)) {
-        userSearches.remove(search);
-      }
-      return await _prefs.saveListOfStringsToSharedPreferences(
-          'previousSearches', userSearches.toSet().toList());
-    } catch (e) {
-      debugPrint(e.toString());
-      rethrow;
     }
   }
 }

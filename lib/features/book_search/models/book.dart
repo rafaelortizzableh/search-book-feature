@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -102,39 +100,5 @@ class Book extends HiveObject {
         pageCount.hashCode ^
         timeStamp.hashCode ^
         imageLinks.hashCode;
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'title': title,
-      'id': id,
-      'authors': authors,
-      'publishedDateString': publishedDateString,
-      'description': description,
-      'pageCount': pageCount,
-      'imageLinks': imageLinks.toMap(),
-      'timeStamp': timeStamp,
-    };
-  }
-
-  factory Book.fromMap(Map<String, dynamic> map) {
-    return Book(
-      title: map['title'] ?? '',
-      id: map['id'] ?? '',
-      authors: List<String>.from(map['authors']),
-      publishedDateString: map['publishedDateString'] ?? '',
-      description: map['description'] ?? '',
-      pageCount: map['pageCount']?.toInt() ?? 0,
-      imageLinks: ImageLinks.fromMap(map['imageLinks']),
-      timeStamp: map['timeStamp'] ?? '',
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory Book.fromJson(String source) => Book.fromMap(json.decode(source));
-
-  bool isFavorite(List<Book> favorites) {
-    return favorites.map((favoriteBook) => favoriteBook.id).contains(id);
   }
 }

@@ -9,9 +9,6 @@ final bookSearchServiceProvider = Provider<BookSearchService>(
 
 abstract class BookSearchService {
   Future<Result<Failure, List<Book>>> searchBooks(String search);
-  List<String>? get getPreviousSearches;
-  Future<bool> addUserSearch(String search);
-  Future<bool> removeUserSearch(String search);
 }
 
 class GoogleBookSearchService implements BookSearchService {
@@ -29,18 +26,5 @@ class GoogleBookSearchService implements BookSearchService {
     } on Failure catch (failure) {
       return Error(failure);
     }
-  }
-
-  @override
-  Future<bool> addUserSearch(String search) {
-    return _repository.addUserSearch(search);
-  }
-
-  @override
-  List<String>? get getPreviousSearches => _repository.getPreviousSearches;
-
-  @override
-  Future<bool> removeUserSearch(String search) {
-    return _repository.removeUserSearch(search);
   }
 }

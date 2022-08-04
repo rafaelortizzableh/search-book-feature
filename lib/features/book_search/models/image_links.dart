@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../core/core.dart';
@@ -31,8 +29,8 @@ class ImageLinks extends HiveObject {
 
   factory ImageLinks.fromMap(Map<String, dynamic> map) {
     return ImageLinks(
-      smallThumbnail: map['smallThumbnail'] ?? '',
-      thumbNail: map['thumbNail'] ?? '',
+      smallThumbnail: map['smallThumbnail'],
+      thumbNail: map['thumbNail'],
     );
   }
 
@@ -58,16 +56,4 @@ class ImageLinks extends HiveObject {
 
   @override
   int get hashCode => smallThumbnail.hashCode ^ thumbNail.hashCode;
-
-  Map<String, dynamic> toMap() {
-    return {
-      'smallThumbnail': smallThumbnail,
-      'thumbNail': thumbNail,
-    };
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory ImageLinks.fromJson(String source) =>
-      ImageLinks.fromMap(json.decode(source));
 }

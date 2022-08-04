@@ -56,25 +56,19 @@ class _NewSearchState extends State<NewSearch> {
                       labelText: '${_translations?.searchBook}'),
                   controller: _searchController,
                   autofocus: true,
-                  textInputAction: TextInputAction.done,
+                  textInputAction: TextInputAction.next,
                   textCapitalization: TextCapitalization.sentences,
-                  onSubmitted: (text) => text.trim().isNotEmpty
-                      ? BookSearchUiFunctions.submitData(
-                          _searchController,
-                          context,
-                        )
-                      : null,
+                  onSubmitted: (_) => BookSearchUiFunctions.submitData(
+                      _searchController, context),
                   onChanged: (text) => setState(() {}),
                 ),
                 const SizedBox(height: _padding16),
                 ElevatedButton(
                   child: Text('${_translations?.search}'),
-                  onPressed: _searchController.text.trim().isEmpty
+                  onPressed: _searchController.text.isEmpty
                       ? null
                       : () => BookSearchUiFunctions.submitData(
-                            _searchController,
-                            context,
-                          ),
+                          _searchController, context),
                 ),
               ],
             ),
