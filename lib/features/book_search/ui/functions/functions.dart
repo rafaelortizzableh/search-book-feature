@@ -5,7 +5,6 @@ import '../../../book_search/book_search_export.dart';
 
 class BookSearchUiFunctions {
   static const _rounderBorder15 = 15.0;
-  static const _opacity095 = 0.95;
 
   static void navigateToBookDetailsPage(BuildContext context, Book book) {
     Navigator.of(context)
